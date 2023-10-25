@@ -45,11 +45,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [_QWERTY] = LAYOUT(
-      KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,   KC_7,    KC_8,    KC_9,    KC_0,   KC_GRV,
-      KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
-      KC_ESC,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,   KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
-      KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,     KC_MPLY, KC_N,   KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                     KC_LCTL,KC_LALT,KC_LGUI,MO(_SYMBOL), KC_SPC,       KC_ENT, MO(_NAV),MO(_NUM), KC_RALT, KC_HYPR
+                   KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,   KC_7,    KC_8,    KC_9,    KC_0,   KC_GRV,
+                   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
+      MT(KC_LCTL, KC_ESC),   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,   KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
+                  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,     KC_MPLY, KC_N,   KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
+                               KC_LCTL,KC_LALT,KC_LGUI,MO(_SYMBOL), KC_SPC,       KC_ENT, MO(_NAV),MO(_NUM), KC_RALT, KC_HYPR
     ),
     /*
      * COLEMAK
@@ -81,8 +81,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | Tab  |   !  |   @  |   #  |   $  |   %  |                    |      |   =  |   (  |   )  |   =  | Bspc |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * | ESC  |   ^  |   &  |   *  |   (  |   )  |-------.    ,-------|      |   -  |   {  |   }  |   +  |   |  |
-     * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
      * | Shift|      |      |      |      |      |-------|    |-------|      |   _  |   [  |   ]  |   \  | Shift|
+     * |------+------+------+------+------+------|  MUTE |    | PLAY  |------+------+------+------+------+------|
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *            | LGUI | LAlt | LCTR | SYM  | /Space  /       \Enter \  | NAV  | NUM  | RAlt | RGUI |
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -97,13 +97,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     /* RAISE
      * ,-----------------------------------------.                    ,-----------------------------------------.
-     * |      |      |      |      |      |      |                    | Home |      |      |      |      |      |
+     * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * | Tab  | DLine| DWrd |      | Menu | Ins  |                    | PgUp | PTab |  Up  | NTab | DLine| Del  |
+     * | Tab  | DLine| DWrd |      | Menu | Ins  |                    |      | PTab |  Up  | NTab |      | Del  |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * | Esc  | LSt  | PWrd | NWrd | LEnd | Caps |-------.    ,-------| PgDn | Left | Down | Right| Bspc | Del  |
+     * | Esc  | LSt  | PWrd | NWrd | LEnd | Caps |-------.    ,-------|      | Left | Down | Right|      | Del  |
      * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
-     * |Shift | Home | PgUp | PgDn | End  | PScr |-------|    |-------| End  | Back |      | Fwd  |      |      |
+     * |Shift | Home | PgUp | PgDn | End  | PScr |-------|    |-------|      | Back |      | Fwd  |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *            | LGUI | LAlt | LCTR | SYM  | /Space  /       \Enter \  | NAV  | NUM  | RAlt | RGUI |
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
