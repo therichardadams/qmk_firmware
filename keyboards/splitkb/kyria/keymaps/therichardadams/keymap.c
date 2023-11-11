@@ -420,12 +420,7 @@ void print_layer(void) {
     }
 }
 
-void print_status(void) {
-    print_os_mode();
-    print_layout();
-    print_layer();
-
-    // Print mods
+void print_mods(void) {
     uint8_t mods = get_mods();
     oled_set_cursor(0, 5);
     oled_write_P(mods & MOD_MASK_GUI ? PSTR("Cmd  ") : PSTR("     "), false);
@@ -433,16 +428,49 @@ void print_status(void) {
     oled_write_P(mods & MOD_MASK_ALT ? PSTR("Opt  ") : PSTR("     "), false);
     oled_set_cursor(0, 7);
     oled_write_P(mods & MOD_MASK_CTRL ? PSTR("Ctrl ") : PSTR("     "), false);
+}
 
-    // Print locks
+void print_locks(void) {
+    // 'Lock', 6x8px
+    const char lock[] PROGMEM = {
+        0x70, 0x7e, 0x71, 0x71, 0x7e, 0x70
+    };
     led_t led_usb_state = host_keyboard_led_state();
-    oled_set_cursor(16, 5);
-    oled_write_P(led_usb_state.num_lock    ? PSTR("NUM ") : PSTR("    "), false);
-    oled_set_cursor(16, 6);
-    oled_write_P(led_usb_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
-    oled_set_cursor(16, 7);
-    oled_write_P(led_usb_state.caps_lock   ? PSTR("CAPS") : PSTR("    "), false);
 
+    // Num Lock
+    oled_set_cursor(16, 5);
+    if (led_usb_state.num_lock) {
+        oled_write_P(PSTR(" NUM"), false);
+        oled_write_raw_P(lock, 6);
+    } else {
+        oled_write_P(PSTR("     "), false);
+    }
+
+    // Scroll Lock
+    oled_set_cursor(16, 6);
+    if (led_usb_state.scroll_lock) {
+        oled_write_P(PSTR(" SCR"), false);
+        oled_write_raw_P(lock, 6);
+    } else {
+        oled_write_P(PSTR("     "), false);
+    }
+
+    // Caps Lock
+    oled_set_cursor(16, 7);
+    if (led_usb_state.caps_lock) {
+        oled_write_P(PSTR("CAPS"), false);
+        oled_write_raw_P(lock, 6);
+    } else {
+        oled_write_P(PSTR("     "), false);
+    }
+}
+
+void print_status(void) {
+    print_os_mode();
+    print_layout();
+    print_layer();
+    print_mods();
+    print_locks();
     render_luna(8, 5);
 }
 
