@@ -7,3 +7,7 @@ for more options.
 #define SPLIT_WPM_ENABLE
 #define OLED_BRIGHTNESS 143
 #define TAPPING_TERM 150
+#ifdef ENCODER_RESOLUTION
+#undef ENCODER_RESOLUTION
+#define ENCODER_RESOLUTION 4
+#endif
